@@ -22,13 +22,17 @@ public class EncodingLab {
     public static String rot13(String input) {
         StringBuilder sb = new StringBuilder();
         String[] text = input.split("");
+        // make all string to handle
         for (int i = 0; i < input.length(); i++){
+            // let all string to list
             sb.append(text[i]);
+            // change letter
             if (Character.isLetter(text[i].charAt(0))){
                 int index = CAPITALS.indexOf(text[i]);
                 sb.deleteCharAt(i);
                 if ((index + 13) >= 26){
-                    char result = CAPITALS.charAt((index+13)%13);
+                    // do not allow out of bounds
+                    char result = CAPITALS.charAt((index+13) % 13);
                     sb.insert(i, result);
                 }else {
                     char result = CAPITALS.charAt(index+13);
